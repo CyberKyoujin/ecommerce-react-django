@@ -38,9 +38,9 @@ function App() {
           <Route path='/smartphones' element={<Smartphones/>}/>
           <Route path='/tablets' element={<Tablets/>}/>
           <Route path='/laptops' element={<Laptops/>}/>
-          <Route path='add-new-adress' element={<AddNewAdress/>}/>
-          <Route path='add-new-card' element={<AddNewCard/>}/>
-          <Route path='search-products' element={<SearchResults/>}/>
+          <Route path='/add-new-adress' element={<AddNewAdress/>}/>
+          <Route path='/add-new-card' element={<AddNewCard/>}/>
+          <Route path='/search-products' element={<SearchResults/>}/>
           <Route path='/cart' element={<Cart/>}/>
         </Routes>
     </main>

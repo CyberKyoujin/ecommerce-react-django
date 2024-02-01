@@ -140,7 +140,6 @@ export const UserProvider = ({ children }) => {
                     'Authorization': `Bearer ${state.authTokens.access}`
                 }
             })
-            console.log(response.data);
             if (response.status === 200){
                 dispatch({
                     type: SET_USER_ADRESSES,
@@ -162,7 +161,6 @@ export const UserProvider = ({ children }) => {
                     'Authorization': `Bearer ${state.authTokens.access}`
                 }
             })
-            console.log(response.data);
             if (response.status === 200){
                 dispatch({
                     type: SET_USER_PAYMENT_METHODS,
