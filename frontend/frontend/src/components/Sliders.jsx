@@ -1,6 +1,30 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+
+
+function NextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <IoIosArrowForward
+      className={className}
+      style={{ ...style, display: "block", color: "black" }} 
+      onClick={onClick}
+    />
+  );
+}
+
+function PrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <IoIosArrowBack
+      className={className}
+      style={{ ...style, display: "block", color: "black" }} 
+      onClick={onClick}
+    />
+  );
+}
 
 export const SliderOne = ({ children }) => {
     const settings = {
@@ -10,6 +34,8 @@ export const SliderOne = ({ children }) => {
         slidesToShow: 5,
         slidesToScroll: 5,
         initialSlide: 0,
+        nextArrow: <NextArrow />,
+        prevArrow: <PrevArrow />,
         
         responsive: [
           {
@@ -61,6 +87,8 @@ export const SliderOne = ({ children }) => {
         slidesToShow: 3,
         slidesToScroll: 3,
         initialSlide: 0,
+        nextArrow: <NextArrow />,
+        prevArrow: <PrevArrow />,
         
         responsive: [
           {
