@@ -11,14 +11,13 @@ import visa from '../assets/visa.png';
 
 const Cart = () => {
 
-  const { cart, removeItem, increaseItem, decreaseItem } = useCartContext();
+  const { cart, removeItem, increaseItem, decreaseItem, createOrder } = useCartContext();
   const { fetchUserAdresses, fetchUserCards, userPaymentMethods, userAdresses } = useUserContext();
 
   const [total, setTotal] = useState(0);
-  const [adress, setAdress] = useState(null);
+  const [address, setAdress] = useState(null);
   const [card, setCard] = useState(null);
 
-  const orderItems = localStorage.getItem('cart');
   
   const cartItems = JSON.parse(localStorage.getItem('cart'));
   const adresses = userAdresses && userAdresses;
@@ -37,10 +36,21 @@ const Cart = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append('order_items', orderItems);
-    formData.append('payment_method', card);
-    formData.append('shipping_address', adress);
+    if( cartItems && card && address){
+      const orderData = {
+        order_items: cartItems.map(item => ({
+            product: item.id,
+            quantity: item.quantity,
+            price: item.price
+        })),
+        payment_method: card,
+        shipping_address: address,
+        total_price: total  
+      };
+      createOrder(orderData);
+    } else {
+      console.log('Missing data!')
+    }
   }
 
   const calculateTotal = () => {

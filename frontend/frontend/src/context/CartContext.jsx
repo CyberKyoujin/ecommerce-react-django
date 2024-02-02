@@ -2,11 +2,16 @@ import { createContext, useContext, useEffect, useReducer } from "react";
 import { cartReducer } from "../reducers/cartReducer";
 import { initialState } from "../reducers/cartReducer";
 import { ADD_ITEM, REMOVE_ITEM, CLEAR_CART, INCREASE_QTY, DECREASE_QTY } from "../actions/cartActions";
+import axios from "axios";
+import { useUserContext } from "./userContext";
+import { UserContext } from "./userContext";
 
 export const CartContext = createContext();
 
 
 export const CartProvider = ({ children }) => {
+
+    const { authTokens } = useUserContext();
 
     const [state, dispatch] = useReducer(cartReducer, initialState, () => {
         const localData = localStorage.getItem('cart');
@@ -41,12 +46,28 @@ export const CartProvider = ({ children }) => {
         })
     }
 
+    const createOrder = async (orderDetails) => {
+        try {
+            const response = await axios.post('http://127.0.0.1:8000/order/add/', orderDetails, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${authTokens.access}`,
+                },
+            });
+            if (response.status === 201) {
+                console.log('Successfully created an order!');
+            }
+        } catch (err) {
+            console.error('Error creating order:', err);
+        }
+    };
+
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(state.cart));
     }, [state.cart])
 
 
-    return <CartContext.Provider value={{ ...state, addItem, removeItem, increaseItem, decreaseItem }}>{children}</CartContext.Provider>;
+    return <CartContext.Provider value={{ ...state, addItem, removeItem, increaseItem, decreaseItem, createOrder }}>{children}</CartContext.Provider>;
 }
 
 export const useCartContext = () => useContext(CartContext);

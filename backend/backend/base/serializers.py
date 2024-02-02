@@ -35,9 +35,11 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def get_image_url(self, obj):
-        if obj.image:
-            return self.context['request'].build_absolute_uri(obj.image.url)
-        return None
+        request = self.context.get('request', None)
+        if request:
+            return request.build_absolute_uri(obj.image.url)
+        else:
+            return obj.image.url if obj.image else None
         
 class OrderItemSerializer(serializers.ModelSerializer):
     product = ProductSerializer(many=False)
@@ -70,7 +72,7 @@ class OrderSerializer(serializers.ModelSerializer):
     
     def get_orderItems(self, obj):
         items = obj.orderitem_set.all()
-        return OrderItemSerializer(items, many=True).data
+        return OrderItemSerializer(items, many=True, context=self.context).data
 
     def get_shippingAddress(self, obj):
         try:
