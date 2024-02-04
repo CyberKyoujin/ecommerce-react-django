@@ -8,6 +8,7 @@ import { useUserContext } from '../context/userContext';
 import mastercard from '../assets/mastercard.png';
 import visa from '../assets/visa.png';
 import { MdDeleteOutline } from "react-icons/md";
+import Footer from '../components/Footer';
 
 const Cart = () => {
 
@@ -68,12 +69,13 @@ const Cart = () => {
 
 
   return (
+    <div>
     <div className='main-container'>
       <form onSubmit={handleSubmit}>
       {!cartItems ? (
         <div className='no-items'>
           <BsCart4 className='no-items-icon'/>
-          <p>There are no products in your shopping cart. Fill the shopping cart with one of our offers.</p>
+          <p>There are no products in your shopping cart. Fill the shopping cart with our offers.</p>
           <button className='no-items-btn' onClick={() => navigate('/products')}>Continue Shopping</button>
         </div>
       )
@@ -93,15 +95,12 @@ const Cart = () => {
 
                   <div className='cart-item-center'>
                     <p>{item.name}</p>
-                    <div> 
+                    <div className='cart-item-center-info'> 
                       <button onClick={() => removeItem(item)}>Remove</button>
+                      <h1 style={{color: 'rgb(239,124,0)', fontSize: '28px'}}>{(item.price * item.quantity).toFixed(2)} $</h1>
                     </div>
                   </div>
 
-                </div>
-
-                <div className='price-container'>
-                  <h1 style={{color: 'rgb(239,124,0)'}}>{(item.price * item.quantity).toFixed(2)} $</h1>
                 </div>
 
                 <div className='cart-footer'>
@@ -157,6 +156,8 @@ const Cart = () => {
           </div>
           )}
       </form>
+      </div>
+      <Footer/>
       </div>
   );
 };
