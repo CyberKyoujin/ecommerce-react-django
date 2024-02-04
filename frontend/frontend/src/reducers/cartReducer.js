@@ -12,13 +12,11 @@ export const cartReducer = (state, action) => {
         case ADD_ITEM:
             const itemIndexAdd = state.cart.findIndex((item) => item.id === action.payload.id);
             if (itemIndexAdd > -1) {
-                // Increase quantity if the item is already in the cart
                 const newCart = state.cart.map((item, index) =>
                     index === itemIndexAdd ? { ...item, quantity: item.quantity + 1 } : item
                 );
                 return { ...state, cart: newCart };
             } else {
-                // Add the new item to the cart
                 return { ...state, cart: [...state.cart, { ...action.payload, quantity: 1 }] };
             }
         case REMOVE_ITEM:
@@ -41,7 +39,11 @@ export const cartReducer = (state, action) => {
                     )
                     .filter((item) => item.quantity > 0),
             };
-        // Other cases...
+        case CLEAR_CART:
+            return {
+                ...state,
+                cart: []
+            }
         default:
             return state;
     }

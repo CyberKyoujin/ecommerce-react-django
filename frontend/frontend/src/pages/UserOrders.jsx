@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useUserContext } from '../context/userContext'
 import mastercard from '../assets/mastercard.png';
 import visa from '../assets/visa.png';
+import Footer from '../components/Footer';
 
 const UserOrders = () => {
 
@@ -18,6 +19,7 @@ const UserOrders = () => {
   console.log(orders);
 
   return (
+    <div>
     <div className='main-container'>
         <div className='orders-container'>
             <h1>Your Orders</h1>
@@ -74,6 +76,8 @@ const UserOrders = () => {
                 </div>
             ))}
         </div>
+    </div>
+    <Footer/>
     </div>
   )
 }

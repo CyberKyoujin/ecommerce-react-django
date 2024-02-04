@@ -7,11 +7,11 @@ import { useNavigate } from 'react-router-dom';
 import { useUserContext } from '../context/userContext';
 import mastercard from '../assets/mastercard.png';
 import visa from '../assets/visa.png';
-
+import { MdDeleteOutline } from "react-icons/md";
 
 const Cart = () => {
 
-  const { cart, removeItem, increaseItem, decreaseItem, createOrder } = useCartContext();
+  const { cart, removeItem, increaseItem, decreaseItem, createOrder, clearCart } = useCartContext();
   const { fetchUserAdresses, fetchUserCards, userPaymentMethods, userAdresses } = useUserContext();
 
   const [total, setTotal] = useState(0);
@@ -19,7 +19,7 @@ const Cart = () => {
   const [card, setCard] = useState(null);
 
   
-  const cartItems = JSON.parse(localStorage.getItem('cart'));
+  const cartItems = JSON.parse(localStorage.getItem('cart')) && JSON.parse(localStorage.getItem('cart')).length > 0 ? JSON.parse(localStorage.getItem('cart')) : null;
   const adresses = userAdresses && userAdresses;
   const cards = userPaymentMethods && userPaymentMethods;
 
@@ -48,18 +48,21 @@ const Cart = () => {
         total_price: total  
       };
       createOrder(orderData);
+      alert('Ordered Successfully!');
+      navigate('/orders');
+      clearCart();
     } else {
-      console.log('Missing data!')
+      alert('Please enter all required data! (incl. Shipping adress and payment method)')
     }
   }
 
   const calculateTotal = () => {
     let totalPrice = 0;
-  
-    cartItems.forEach(item => {
-      totalPrice += item.price * item.quantity;
-    });
-  
+    if (cartItems){
+      cartItems.forEach(item => {
+        totalPrice += item.price * item.quantity;
+      });
+    }
     setTotal(totalPrice.toFixed(2));
   };
 
@@ -67,7 +70,7 @@ const Cart = () => {
   return (
     <div className='main-container'>
       <form onSubmit={handleSubmit}>
-      {cartItems.length === 0 ? (
+      {!cartItems ? (
         <div className='no-items'>
           <BsCart4 className='no-items-icon'/>
           <p>There are no products in your shopping cart. Fill the shopping cart with one of our offers.</p>
@@ -109,6 +112,8 @@ const Cart = () => {
 
               </div>
             ))}
+
+              <button className='clear-btn' onClick={() => clearCart()}><MdDeleteOutline/> Clear Cart</button>
 
               <div className='select-container'>
 

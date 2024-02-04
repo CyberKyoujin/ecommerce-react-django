@@ -1015,6 +1015,19 @@ body{
   padding: 1rem;
 }
 
+.clear-btn{
+  width: 100%;
+  padding: 0.5rem;
+  color: black;
+  background-color: white;
+  border: 2px solid black;
+  font-size: 18px;
+  font-weight: 550;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
 @media (max-width: 1000px) {
   .main-cart-container {
       flex-direction: column;
