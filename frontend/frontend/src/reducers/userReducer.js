@@ -1,4 +1,4 @@
-import { REGISTER_USER, LOGIN_USER, LOGOUT_USER, UPDATE_TOKEN, LOGIN_ERROR, REGISTER_ERROR, RESET_LOGIN_ERROR, RESET_REGISTER_ERROR, SET_USER_PROFILE, SET_USER_ADRESSES, ADRESSES_ERROR, SET_USER_PAYMENT_METHODS, PAYMENT_METHODS_ERROR } from "../actions/userActions";
+import { REGISTER_USER, LOGIN_USER, LOGOUT_USER, UPDATE_TOKEN, LOGIN_ERROR, REGISTER_ERROR, RESET_LOGIN_ERROR, RESET_REGISTER_ERROR, SET_USER_PROFILE, SET_USER_ADRESSES, ADRESSES_ERROR, SET_USER_PAYMENT_METHODS, SET_USER_ORDERS } from "../actions/userActions";
 import { jwtDecode } from "jwt-decode";
 
 
@@ -14,6 +14,7 @@ export const initialState = {
     userPaymentMethods: [],
     adressesError: null,
     paymentMethodsError: null,
+    userOrders: [],
 };
 
 export const userReducer = (state, action) => {
@@ -91,6 +92,11 @@ export const userReducer = (state, action) => {
             return {
                 ...state,
                 paymentMethodsError: action.payload
+            }
+        case SET_USER_ORDERS:
+            return {
+                ...state,
+                userOrders: action.payload,
             }
         default:
             return state;

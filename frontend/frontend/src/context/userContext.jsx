@@ -2,7 +2,7 @@ import { useState, createContext, useContext, useEffect, useReducer } from "reac
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
-import { REGISTER_USER, LOGIN_USER, LOGOUT_USER, UPDATE_TOKEN, LOGIN_ERROR, REGISTER_ERROR, SET_USER_PROFILE, SET_USER_ADRESSES, ADRESSES_ERROR, SET_USER_PAYMENT_METHODS, PAYMENT_METHODS_ERROR } from "../actions/userActions";
+import { REGISTER_USER, LOGIN_USER, LOGOUT_USER, UPDATE_TOKEN, LOGIN_ERROR, REGISTER_ERROR, SET_USER_PROFILE, SET_USER_ADRESSES, ADRESSES_ERROR, SET_USER_PAYMENT_METHODS, PAYMENT_METHODS_ERROR, SET_USER_ORDERS } from "../actions/userActions";
 import { userReducer } from "../reducers/userReducer";
 import { initialState } from "../reducers/userReducer";
 
@@ -245,6 +245,24 @@ export const UserProvider = ({ children }) => {
 
     }
 
+    const fetchUserOrders = async() => {
+        try{
+            const response = await axios.get('/order/user-orders/', {
+                headers: {
+                    'Authorization': `Bearer ${state.authTokens.access}`
+                }
+            });
+            if(response.status === 200){
+                dispatch({
+                    type: SET_USER_ORDERS,
+                    payload: response.data
+                })
+            }
+        } catch(err){
+            console.log(err.message);
+        }
+    }
+
     useEffect(() => {
         const fourMinutes = 1000 * 60 * 4;
         const interval = setInterval(() => {
@@ -257,7 +275,7 @@ export const UserProvider = ({ children }) => {
     }, [state.isAuthenticated]);
 
     return (
-        <UserContext.Provider value={{ ...state, registerUser, loginUser, logoutUser, dispatch, fetchUserProfile, updateProfile, fetchUserAdresses, fetchUserCards, removeAdress, removeCard, addNewAdress, addNewCard}}>
+        <UserContext.Provider value={{ ...state, registerUser, loginUser, logoutUser, dispatch, fetchUserProfile, updateProfile, fetchUserAdresses, fetchUserCards, removeAdress, removeCard, addNewAdress, addNewCard, fetchUserOrders}}>
             {children}
         </UserContext.Provider>
     );

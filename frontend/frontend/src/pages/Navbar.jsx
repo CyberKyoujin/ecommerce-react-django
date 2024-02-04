@@ -129,6 +129,9 @@ const Navbar = () => {
                         <button className='login-btn' onClick={() => navigate('/profile')}>To Profile</button>
                     </div>
                     <div>
+                        <button className='login-btn' onClick={() => navigate('/orders')}>Your orders</button>
+                    </div>
+                    <div>
                         <button className='signup-btn' onClick={() => logoutUser()}>Logout</button>
                     </div>
                 </>

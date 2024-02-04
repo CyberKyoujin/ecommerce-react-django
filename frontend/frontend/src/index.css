@@ -1043,6 +1043,90 @@ body{
   }
 }
 
+/* USER ORDERS */
+.orders-container{
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: auto;
+  margin-top: 3rem;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  gap: 2rem;
+}
+
+.order-container{
+  display: flex;
+  width: 800px;
+  flex-direction: column;
+  background-color: white;
+  border: 1px solid grey;
+  padding: 2rem;
+  justify-content: center;
+}
+
+.order-header{
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.order-item{
+  display: flex;
+  height: 240px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.order-item h4{
+  margin-top: 0px;
+}
+
+.order-item p{
+  margin-top: 1rem;
+}
+
+.order-item img{
+  width: 150px;
+  height: 140px;
+}
+
+.order-footer{
+  display: flex;
+  flex-direction: column;
+}
+
+.order-footer div{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.order-footer h4{
+  margin: 0px;
+}
+
+.card-img{
+  width: 30px;
+  height: 20px;
+}
+
+.total-order-container{
+  display: flex;
+  justify-content: center;
+  color: rgb(239, 124, 0);
+}
+
+@media (max-width: 900px) {
+  .order-header {
+      flex-direction: column;
+  }
+  .order-container{
+    width: 600px;
+  }
+}
+
 /* FOOTER */
 
 .footer{
@@ -1058,3 +1142,4 @@ body{
   width: 70%;
   color: rgb(168, 168, 168);
 }
+

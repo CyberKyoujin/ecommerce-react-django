@@ -19,6 +19,8 @@ import AddNewAdress from './pages/AddNewAdress'
 import AddNewCard from './pages/AddNewCard'
 import SearchResults from './pages/SearchResults'
 import Cart from './pages/Cart'
+import UserOrders from './pages/UserOrders'
+
 
 function App() {
 
@@ -42,6 +44,7 @@ function App() {
           <Route path='/add-new-card' element={<AddNewCard/>}/>
           <Route path='/search-products' element={<SearchResults/>}/>
           <Route path='/cart' element={<Cart/>}/>
+          <Route path='/orders' element={<UserOrders/>}/>
         </Routes>
     </main>
 
