@@ -53,5 +53,28 @@ Core pages of the project
 
 <img width="1071" alt="Cart" src="https://github.com/CyberKyoujin/ecommerce-react-django/assets/101016388/b1d10866-353e-4b54-9431-ea3b95b09b80">
 
+## User Orders
+
+<img width="1075" alt="orders" src="https://github.com/CyberKyoujin/ecommerce-react-django/assets/101016388/2f8842a5-0fb8-43bc-803f-54d7669b8c52">
+
+## User Profile Page
+
+<img width="1007" alt="profile" src="https://github.com/CyberKyoujin/ecommerce-react-django/assets/101016388/b1abf658-8cb4-49df-bde4-f5ce7695db08">
+
+## Responsive for different viewports
+
+<img width="595" alt="responsive" src="https://github.com/CyberKyoujin/ecommerce-react-django/assets/101016388/028fcad2-0c65-447b-b9b1-c15f47ae7f21">
+
+## Features
+- JWT user authentication with a token refresh
+- Responsive UI adapted for different viewports
+- Categories for products and filter functionality
+- User Profile with the ability to add or delete user info (shipping addresses or payment methods)
+- Ability to change the profile picture
+- Search over the products
+
+
+
+
 
 
