@@ -19,7 +19,6 @@ const UserOrders = () => {
   console.log(orders);
 
   return (
-    <div>
     <div className='main-container'>
         <div className='orders-container'>
             <h1>Your Orders</h1>
@@ -76,8 +75,6 @@ const UserOrders = () => {
                 </div>
             ))}
         </div>
-    </div>
-    <Footer/>
     </div>
   )
 }

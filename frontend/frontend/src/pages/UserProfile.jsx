@@ -30,7 +30,6 @@ const UserProfile = () => {
   const userCardsList = userPaymentMethods && userPaymentMethods;
 
   return (
-    <div>
     <div className='main-container'>
       <div className='profile-container'>
         <div className='avatar-container'>
@@ -108,9 +107,7 @@ const UserProfile = () => {
       </div>
     </div>
 
-        <Footer/>
-
-    </div>
+        
   );
 };
 

@@ -69,7 +69,6 @@ const Cart = () => {
 
 
   return (
-    <div>
     <div className='main-container'>
       <form onSubmit={handleSubmit}>
       {!cartItems ? (
@@ -156,8 +155,6 @@ const Cart = () => {
           </div>
           )}
       </form>
-      </div>
-      <Footer/>
       </div>
   );
 };

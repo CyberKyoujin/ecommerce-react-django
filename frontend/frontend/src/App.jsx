@@ -20,6 +20,7 @@ import AddNewCard from './pages/AddNewCard'
 import SearchResults from './pages/SearchResults'
 import Cart from './pages/Cart'
 import UserOrders from './pages/UserOrders'
+import Footer from './components/Footer'
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
           <Route path='/cart' element={<Cart/>}/>
           <Route path='/orders' element={<UserOrders/>}/>
         </Routes>
+        <Footer/>
     </main>
 
   )
