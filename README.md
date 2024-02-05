@@ -35,3 +35,23 @@ python manage.py runserver
 ecommerce-react-django/frontend/frontend
 npm install
 npm run dev
+```
+
+## Overview
+
+Core pages of the project
+
+## Homepage
+
+<img width="1678" alt="Homepage" src="https://github.com/CyberKyoujin/ecommerce-react-django/assets/101016388/5fcb7ec4-ec05-4c74-9499-290e9f8553ce">
+
+## Products Page
+
+<img width="1321" alt="Products" src="https://github.com/CyberKyoujin/ecommerce-react-django/assets/101016388/72712b8f-258f-4b65-b0c1-0d02e6a7922f">
+
+## Cart
+
+<img width="1071" alt="Cart" src="https://github.com/CyberKyoujin/ecommerce-react-django/assets/101016388/b1d10866-353e-4b54-9431-ea3b95b09b80">
+
+
+
