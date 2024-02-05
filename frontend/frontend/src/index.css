@@ -14,7 +14,7 @@ body{
   display: flex;
   background-color: black;
   height: 5rem;
-  padding: 10px;
+  padding: 1.5rem;
   justify-content: center;
 }
 
@@ -124,11 +124,12 @@ body{
   .nav-center{
     position: absolute;
     top: 5rem;
-    right: 11.75rem;
+    right: 11rem;
     width: 60%;
   }
   .nav-container{
     position: relative;
+    gap: 0rem;
   }
   .navbar{
     height: 9rem;
@@ -136,6 +137,9 @@ body{
   }
   .search-icon{
     top: 11px;
+  }
+  .nav-header{
+    margin-left: 2rem;
   }
 
 }
